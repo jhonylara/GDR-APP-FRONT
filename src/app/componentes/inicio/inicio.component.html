@@ -1,0 +1,81 @@
+<div class="row">
+  <h2 class="col-sm-6">{{ projeto?.nome }} - Visão Geral</h2>
+  <div class="col-sm-6">
+    <button icon="fa fa-plus" pButton label="Novo Integrante" class="ui-button-success float-right" (click)="novoIntegrante()"></button>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <!-- Card integrantes -->
+  <div class="card" style="width: 22rem; margin: 1%;">
+    <div class="card-header text-center">
+      INTEGRANTES
+    </div>
+    <ul class="list-group list-group-flush">
+      <div *ngIf="integrantes?.length > 0">
+        <li class="list-group-item" *ngFor="let int of integrantes">
+          {{ int?.nome }} - {{ int?.perfil }}
+        </li>
+      </div>
+      <div class="text-center" *ngIf="integrantes?.length === 0">
+        Este projeto nao possui integrantes.
+      </div>
+    </ul>
+    <div class="card-footer text-center">
+      <div *ngIf="integrantes?.length > 0">
+        <a [routerLink]="['../integrantes']">
+          <i class="fa fa-plus"></i>
+          Ver mais
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Card requisitos -->
+  <div class="card" style="width: 22rem; margin: 1%;">
+    <div class="card-header text-center">
+      REQUISITOS
+    </div>
+    <ul class="list-group list-group-flush">
+      <div *ngIf="requisitos?.length > 0">
+        <li class="list-group-item" *ngFor="let req of requisitos">
+          {{ req.categoria === 'Funcional' ? 'RF ' + req?.idRequisito : 'RNF ' + req?.idRequisito }} - {{ req?.nome }}
+        </li>
+      </div>
+      <div class="text-center" *ngIf="requisitos?.length === 0">
+        Este projeto nao possui requisitos.
+      </div>
+    </ul>
+    <div class="card-footer text-center">
+      <div *ngIf="requisitos?.length > 0">
+        <a [routerLink]="['../requisitos']">
+          <i class="fa fa-plus"></i>
+          Ver mais
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Card atividades -->
+  <div class="card" style="width: 22rem; margin: 1%;">
+    <div class="card-header text-center">
+      ATIVIDADES
+    </div>
+    <ul class="list-group list-group-flush">
+      <div *ngIf="atividades?.length > 0">
+        <li class="list-group-item" *ngFor="let atividade of atividades">
+          {{ atividade.nome }} - {{ atividade.status }}
+        </li>
+      </div>
+      <div class="text-center" *ngIf="atividades?.length === 0">
+        Este projeto nao possui atividades.
+      </div>
+    </ul>
+    <div class="card-footer text-center">
+      <div *ngIf="atividades?.length > 0">
+        <a [routerLink]="['../atividades']">
+          <i class="fa fa-plus"></i>
+          Ver mais
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<br>

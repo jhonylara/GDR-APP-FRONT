@@ -1,0 +1,14 @@
+<ul class="navbar-nav mr-auto" *ngIf="usuario">
+  <li class="nav-item dropdown">
+    <a id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i style="font-size:20px;" class="fa fa-user"></i>
+      {{ usuario | uppercase }}
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a id="lnk-sair" href="#" (click)="logout()" class="dropdown-item">
+        <i class="fa fa-sign-out"></i>
+        Sair
+      </a>
+    </div>
+  </li>
+</ul>

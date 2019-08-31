@@ -1,0 +1,50 @@
+<form class="form-signin" [formGroup]="cadastroForm">
+  <div class="container">
+    <div class="row">
+      <span class="ui-float-label col-12">
+        <input id="inpNome" pInputText formControlName="nome" type="text" class="col-12" required>
+        <label class="col-12" for="inpNome">
+          Nome
+        </label>
+      </span>
+    </div>
+    <div class="row">
+      <app-log-erro [mostraErro]="verificaValidTouched('nome')" msgErro=" Nome invalido!" class="col-12 my-1"></app-log-erro>
+    </div>
+    <div style="margin-top: 7%" class="row">
+      <span class="ui-float-label col-12">
+        <input id="inpEmailCadastro" pInputText formControlName="email" type="email" class="col-12" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$">
+        <label class="col-12" for="inpEmailCadastro">
+          Email
+        </label>
+      </span>
+    </div>
+    <div class="row">
+      <app-log-erro [mostraErro]="verificaValidTouched('email')" msgErro=" Email invalido!" class="col-12 my-1"></app-log-erro>
+      <app-log-erro [mostraErro]="verificaEmailInvalido()" msgErro=" Email inválido!" class="col-12 my-1"></app-log-erro>
+    </div>
+    <div style="margin-top: 7%" class="row">
+      <span class="ui-float-label col-12">
+        <input id="inpSenhaCadastro" formControlName="senha" type="password" pPassword promptLabel="Digite uma senha" weakLabel="fraca"
+          mediumLabel="media" strongLabel="forte" required class="col-12">
+        <label for="inpSenhaCadastro" class="col-12">
+          Senha
+        </label>
+      </span>
+    </div>
+    <div class="row">
+      <app-log-erro [mostraErro]="verificaValidTouched('senha')" msgErro=" Senha invalida!" class="col-12 my-1"></app-log-erro>
+    </div>
+    <div style="margin-top: 7%" class="row">
+      <span class="ui-float-label col-12">
+        <input id="inpConfirmarSenha" formControlName="confirmarSenha" type="password" pInputText required class="col-12">
+        <label for="inpConfirmarSenha" class="col-12">
+          Confirmar senha
+        </label>
+      </span>
+    </div>
+    <div class="row">
+      <app-log-erro [mostraErro]="verificaSenha()" msgErro=" Senha invalida!" class="col-12 my-1"></app-log-erro>
+    </div>
+  </div>
+</form>

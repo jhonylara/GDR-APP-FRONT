@@ -1,0 +1,26 @@
+<div class="row text-center">
+  <div class="col-sm-6 offset-sm-3 col-lg-4 offset-lg-4">
+    <p-card title="Trocar senha" subtitle="Digite o código a baixo recebido por e-mail">
+      <form class="form-signin" [formGroup]="validarSenhaForm" (ngSubmit)="onSubmit()">
+        <div class="container">
+          <div style="margin-top: 7%" class="row">
+            <span class="ui-float-label col-12">
+              <input id="inpCodigoValidarSenha" pInputText formControlName="codigo" type="text" class="col-12" required>
+              <label class="col-12" for="inpCodigoValidarSenha">
+                <i class="fa fa-lock"></i>
+                Código
+              </label>
+            </span>
+          </div>
+          <div class="row">
+            <app-log-erro [mostraErro]="verificaValidTouched('codigo')" msgErro=" Código inválido!" class="col-12 my-1"></app-log-erro>
+          </div>
+          <div class="text-center row">
+            <button icon="fa fa-sign-in" class="col-12" pButton iconPos="left" label="Avançar" type="submit" id="btnLogin" [disabled]="!verificaForm()"></button>
+          </div>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>
+<br>

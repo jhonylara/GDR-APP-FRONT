@@ -1,0 +1,92 @@
+<div class="row text-center">
+  <div class="col-sm-6 offset-sm-3 col-lg-4 offset-lg-4">
+    <p-card title="Login">
+      <form class="form-signin" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <div class="container">
+          <div class="row">
+            <span class="ui-float-label col-12">
+              <input pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$" id="inpEmail" pInputText formControlName="email" type="email" class="col-12"
+                required>
+              <label class="col-12" for="inpEmail">
+                <i class="fa fa-at"></i>
+                Email
+              </label>
+            </span>
+          </div>
+          <div class="row">
+            <app-log-erro [mostraErro]="verificaValidTouched('email')" msgErro=" Email invalido!" class="col-12 my-1"></app-log-erro>
+          </div>
+          <div style="margin-top: 5%" class="row">
+            <span class="ui-float-label col-12">
+              <input id="inpSenha" formControlName="senha" type="password" pInputText required class="col-12">
+              <label for="inpSenha" class="col-12">
+                <i class="fa fa-lock"></i>
+                Senha
+              </label>
+            </span>
+          </div>
+          <div class="row">
+            <app-log-erro [mostraErro]="verificaValidTouched('senha')" msgErro=" Senha invalida!" class="col-12 my-1"></app-log-erro>
+          </div>
+          <br>
+          <div class="text-center row">
+            <button icon="fa fa-sign-in" class="col-12" pButton iconPos="left" label="Entrar" type="submit" id="btnLogin" [disabled]="!verificaForm()"></button>
+          </div>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-7">
+          <a class="text-left" (click)="showDialogEsqueceuSenha()">
+            Esqueceu sua senha?
+          </a>
+        </div>
+        <div class="col-5">
+          <a class="text-right" (click)="showDialogCadastro()">
+            Cadastre-se
+          </a>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <app-log-erro [mostraErro]="erroLogin" [msgErro]="' '+msgErroLogin" class="col-12 my-1"></app-log-erro>
+        </div>
+      </div>
+    </p-card>
+    <p-message *ngIf="usuarioCadastradoLog" severity="success" text="Usuario cadastrado com sucesso!"></p-message>
+    <p-message *ngIf="usuarioEsqueceuSenhaLog" severity="success" text="Acesse seu email para validar alteração de senha!"></p-message>
+  </div>
+</div>
+
+<!-- Cadastro usuário -->
+<p-dialog [visible]="displayCadastro" [modal]="true" [dismissableMask]="false" [closeOnEscape]="true" [responsive]="true"
+  [closable]="false" [width]="350" [minWidth]="200" [minY]="70" [minX]="100" [draggable]="false" [resizable]="false">
+  <p-header>
+    Cadastro
+  </p-header>
+  <app-cadastro [user]="user" #cadastro></app-cadastro>
+  <p-footer>
+    <button class="ui-button-danger" icon="fa fa-times-circle" pButton label="cancelar" (click)="displayCadastro = false"></button>
+    <button class="ui-button-success" icon="fa fa-save" pButton label="cadastrar" (click)="cadastro.salvarDados(); cadastrarUsuario()"
+      [disabled]="cadastro.verificaForm()"></button>
+  </p-footer>
+  <div class="row text-center">
+    <app-log-erro [mostraErro]="erroCadastro" [msgErro]="' '+msgErroCadastro" class="col-12 my-1"></app-log-erro>
+  </div>
+</p-dialog>
+
+<!-- Esqueceu senha -->
+<p-dialog [visible]="displayEsqueceuSenha" [modal]="true" [dismissableMask]="false" [closeOnEscape]="true" [responsive]="true"
+  [closable]="false" [width]="350" [minWidth]="200" [minY]="70" [minX]="100" [draggable]="false" [resizable]="false">
+  <p-header>
+    Esqueceu Senha
+  </p-header>
+  <app-esqueceu-senha [user]="user" #esqueceusenha></app-esqueceu-senha>
+  <p-footer>
+    <button class="ui-button-danger" icon="fa fa-times-circle" pButton label="cancelar" (click)="displayEsqueceuSenha = false"></button>
+    <button class="ui-button-success" icon="fa fa-save" pButton label="enviar" (click)="esqueceusenha.salvarDados(); esqueceuSenha()"
+      [disabled]="esqueceusenha.verificaForm()"></button>
+  </p-footer>
+  <div class="row text-center">
+    <app-log-erro [mostraErro]="erroEsqueceuSenha" [msgErro]="' '+msgErroEsqueceuSenha" class="col-12 my-1"></app-log-erro>
+  </div>
+</p-dialog>

@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": "0",
+      "name": "admin",
+      "email": "admin@email.com",
+      "password": "admin@email.com",
+      "serverName": "localhost:3000",
+      "projetos": [1, 2]
+    },
+    {
+      "id": "1",
+      "name": "guest",
+      "email": "guest@email.com",
+      "password": "guest@email.com",
+      "serverName": "localhost:3000",
+      "projetos": []
+    }
+  ]
+}

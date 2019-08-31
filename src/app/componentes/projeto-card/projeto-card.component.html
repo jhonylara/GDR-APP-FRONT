@@ -1,0 +1,61 @@
+<ng-container *ngIf="!edit; else editForm">
+  <div class="form-group row mb-0">
+    <strong class="col-sm-5 col-form-label text-right">
+      Nome:
+    </strong>
+    <div class="col-sm-7">
+      <span class="form-control-plaintext text-left">
+        {{ projetoAux?.nome }}
+      </span>
+    </div>
+  </div>
+  <div class="form-group row mb-0">
+    <strong class="col-sm-5 col-form-label text-right">
+      Data inicio:
+    </strong>
+    <div class="col-sm-7">
+      <span class="form-control-plaintext text-left">
+        {{ projetoAux?.dataInicio }}
+      </span>
+    </div>
+  </div>
+  <div class="form-group row mb-0">
+    <strong class="col-sm-5 col-form-label text-right">
+      Data fim:
+    </strong>
+    <div class="col-sm-7">
+      <span class="form-control-plaintext text-left">
+        {{ projetoAux?.dataFim }}
+      </span>
+    </div>
+  </div>
+</ng-container>
+<ng-template #editForm>
+  <form [formGroup]="projetoForm">
+    <div class="form-group row mb-0">
+      <strong class="col-sm-5 col-form-label text-right">
+        Nome:
+      </strong>
+      <div class="col-sm-7">
+        <input pTooltip="nome do projeto" tooltipPosition="right" tooltipEvent="focus" pInputText formControlName="nome" required
+          type="text" id="nomeInp">
+      </div>
+    </div>
+    <div class="form-group row mb-0">
+      <strong class="col-sm-5 col-form-label text-right">
+        Data inicio:
+      </strong>
+      <div class="col-sm-7">
+        <p-calendar dateFormat="dd/mm/yy" formControlName="dataInicio"></p-calendar>
+      </div>
+    </div>
+    <div class="form-group row mb-0">
+      <strong class="col-sm-5 col-form-label text-right">
+        Data fim:
+      </strong>
+      <div class="col-sm-7">
+        <p-calendar dateFormat="dd/mm/yy" formControlName="dataFim"></p-calendar>
+      </div>
+    </div>
+  </form>
+</ng-template>

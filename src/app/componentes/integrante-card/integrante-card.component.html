@@ -1,0 +1,43 @@
+<ng-container *ngIf="!edit; else editIntegrante">
+  <div class="form-group row mb-0">
+    <strong class="col-sm-4 col-form-label text-right">
+      Nome:
+    </strong>
+    <div class="col-sm-8">
+      <span class="form-control-plaintext text-left">
+        {{ integranteAux?.nome }}
+      </span>
+    </div>
+  </div>
+  <div class="form-group row mb-0">
+    <strong class="col-sm-4 col-form-label text-right">
+      Perfil no projeto:
+    </strong>
+    <div class="col-sm-8">
+      <span class="form-control-plaintext text-left">
+        {{ integranteAux?.perfil }}
+      </span>
+    </div>
+  </div>
+</ng-container>
+<ng-template #editIntegrante>
+  <form [formGroup]="integranteForm">
+    <div class="form-group row mb-0" *ngIf="novo">
+      <strong class="col-sm-4 col-form-label text-right">
+        Usuario:
+      </strong>
+      <div class="col-sm-8">
+        <p-dropdown [options]="usuarios" [(ngModel)]="usuarioSelecionado" (ngModelChange)="emitUsuarioSelecionado.emit(usuarioSelecionado)"
+          [ngModelOptions]="{standalone: true}"></p-dropdown>
+      </div>
+    </div>
+    <div class="form-group row mb-0">
+      <strong class="col-sm-4 col-form-label text-right">
+        Perfil:
+      </strong>
+      <div class="col-sm-8">
+        <p-dropdown formControlName="perfil" [options]="perfis" [(ngModel)]="perfilSelecionado"></p-dropdown>
+      </div>
+    </div>
+  </form>
+</ng-template>

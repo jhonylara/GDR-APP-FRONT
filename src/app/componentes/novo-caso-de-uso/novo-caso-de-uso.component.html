@@ -1,0 +1,45 @@
+<p-card #pnl>
+  <div class="text-center">
+    <h2>Novo Caso de Uso</h2>
+  </div>
+  <app-caso-de-uso-card
+    [edit]="edit"
+    [casoDeUso]="casoDeUso"
+    #card
+  ></app-caso-de-uso-card>
+  <div class="text-center">
+    <button
+      pButton
+      class="ui-button-success"
+      label="Salvar"
+      icon="fa fa-fw fa-save"
+      id="btnSalvar"
+      [disabled]="!card.casoDeUsoForm.valid"
+      (click)="card.salvarDados(); salvarCasoDeUso()"
+    ></button>
+    <button
+      pButton
+      label="Cancelar"
+      icon="fa fa-fw fa-times-circle"
+      class="ui-button-danger"
+      id="btnCancelar"
+      (click)="cancelar()"
+    ></button>
+  </div>
+</p-card>
+<p-blockUI
+  [target]="pnl"
+  [blocked]="blockedPanel"
+>
+  <i
+    class="fa fa-lock fa-5x"
+    style="position:absolute;top:100%;left:100%"
+  ></i>
+  <div class="text-center">
+    <i
+      class="fa fa-pulse fa-spinner"
+      style="font-size: 150px;"
+    >
+    </i>
+  </div>
+</p-blockUI>

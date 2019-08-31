@@ -1,0 +1,25 @@
+<p-card #pnl>
+  <div class="text-center">
+    <h2>Novo Integrante</h2>
+  </div>
+  <app-integrante-card [novo]="true" [edit]="edit" [integrante]="integrante" (emitUsuarioSelecionado)="atualizarUsuario($event)"
+    #card></app-integrante-card>
+  <br>
+  <div class="text-center">
+    <button pButton class="ui-button-success" label="Salvar" icon="fa fa-fw fa-save" id="btnSalvar" (click)="card.salvarDados(); salvarIntegrante()"
+      [disabled]="!(card.integranteForm.valid && usuarioSelecionado)"></button>
+    <button pButton label="Cancelar" icon="fa fa-fw fa-times-circle" class="ui-button-danger" id="btnCancelar" (click)="cancelar()"></button>
+  </div>
+  <br>
+  <div class="text-center">
+    <app-log-erro [mostraErro]="!(card.integranteForm.valid && usuarioSelecionado)" [msgErro]="msgErroIntegrante"></app-log-erro>
+    <app-log-erro [mostraErro]="integranteLog" [msgErro]="msgErroIntegrante"></app-log-erro>
+  </div>
+</p-card>
+<p-blockUI [target]="pnl" [blocked]="blockedPanel">
+  <i class="fa fa-lock fa-5x" class="align-top text-left"></i>
+  <div class="text-center align-middle">
+    <i class="fa fa-pulse fa-spinner">
+    </i>
+  </div>
+</p-blockUI>

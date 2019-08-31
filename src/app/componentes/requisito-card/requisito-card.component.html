@@ -1,0 +1,118 @@
+<ng-container *ngIf="!edit; else editRequisito">
+  <div class="form-group row mb-0">
+    <strong class="col-sm-4 col-form-label text-right">
+      ID do Requisito:
+    </strong>
+    <div class="col-sm-8">
+      <span class="form-control-plaintext text-left">
+        {{ requisitoAux?.idRequisito }}
+      </span>
+    </div>
+  </div>
+  <div class="form-group row mb-0">
+    <strong class="col-sm-4 col-form-label text-right">
+      Nome:
+    </strong>
+    <div class="col-sm-8">
+      <span class="form-control-plaintext text-left">
+        {{ requisitoAux?.nome }}
+      </span>
+    </div>
+  </div>
+  <div class="form-group row mb-0">
+    <strong class="col-sm-4 col-form-label text-right">
+      Descricao:
+    </strong>
+    <div class="col-sm-8">
+      <span class="form-control-plaintext text-left">
+        {{ requisitoAux?.descricao }}
+      </span>
+    </div>
+  </div>
+  <div class="form-group row mb-0">
+    <strong class="col-sm-4 col-form-label text-right">
+      Importancia:
+    </strong>
+    <div class="col-sm-8">
+      <span class="form-control-plaintext text-left">
+        {{ requisitoAux?.importancia }}
+      </span>
+    </div>
+  </div>
+  <div class="form-group row mb-0">
+    <strong class="col-sm-4 col-form-label text-right">
+      Fonte:
+    </strong>
+    <div class="col-sm-8">
+      <span class="form-control-plaintext text-left">
+        {{ requisitoAux?.fonte }}
+      </span>
+    </div>
+  </div>
+  <div class="form-group row mb-0">
+    <strong class="col-sm-4 col-form-label text-right">
+      Categoria:
+    </strong>
+    <div class="col-sm-8">
+      <span class="form-control-plaintext text-left">
+        {{ requisitoAux?.categoria }}
+      </span>
+    </div>
+  </div>
+</ng-container>
+<ng-template #editRequisito>
+  <form [formGroup]="requisitoForm">
+    <div class="form-group row mb-0">
+      <strong class="col-sm-4 col-form-label text-right">
+        ID do Requisito:
+      </strong>
+      <div class="col-sm-8">
+        <input pTooltip="ID de uma funcionadade ou sub-funcionalide. Ex.: (Para Funcionadade Principal) 1 - (Para Sub Funcionadade) 1.1" tooltipPosition="right" tooltipEvent="focus" class="col-sm-8" pInputText
+         formControlName="idRequisito">
+      </div>
+    </div>
+    <div class="form-group row mb-0">
+      <strong class="col-sm-4 col-form-label text-right">
+        Nome:
+      </strong>
+      <div class="col-sm-8">
+        <input pTooltip="Nome de uma funcionadade. Ex.: 'Cadastro de requisito.'" tooltipPosition="right" tooltipEvent="focus" class="col-sm-8" pInputText
+          formControlName="nome">
+      </div>
+    </div>
+    <div class="form-group row mb-0">
+      <strong class="col-sm-4 col-form-label text-right">
+        Descricao:
+      </strong>
+      <div class="col-sm-8">
+        <textarea pTooltip="Descricao de uma funcionaliade. Ex.: 'Permitir usuário logado cadastrar requisitos.'" tooltipPosition="right" tooltipEvent="focus" pInputTextarea
+          formControlName="descricao" required type="text" id="descricaoInp" class="col-sm-8"></textarea>
+      </div>
+    </div>
+    <div class="form-group row mb-0">
+      <strong class="col-sm-4 col-form-label text-right">
+        Importancia:
+      </strong>
+      <div class="col-sm-8">
+        <p-dropdown formControlName="importancia" [options]="importancia" [(ngModel)]="importanciaSelecionada"></p-dropdown>
+      </div>
+    </div>
+    <div class="form-group row mb-0">
+      <strong class="col-sm-4 col-form-label text-right">
+        Fonte:
+      </strong>
+      <div class="col-sm-8">
+        <input pTooltip="quem necessita? Ex.: Cliente" tooltipPosition="right" tooltipEvent="focus" class="col-sm-8" pInputText
+          formControlName="fonte">
+      </div>
+    </div>
+    <div class="form-group row mb-0">
+      <strong class="col-sm-4 col-form-label text-right">
+        Categoria:
+      </strong>
+      <div class="col-sm-8">
+        <p-dropdown formControlName="categoria" [options]="categoria" [(ngModel)]="categoriaSelecionada"></p-dropdown>
+      </div>
+    </div>
+  </form>
+</ng-template>

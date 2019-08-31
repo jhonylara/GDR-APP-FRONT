@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="">
+    PBL
+  </a>
+  <button *ngIf="token" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul *ngIf="projetoSelecionado" class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="[projetoSelecionado, 'inicio']" routerLinkActive="active" id="inicioLnk">
+          Inicio
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="[projetoSelecionado,'integrantes']" routerLinkActive="active" id="integranteLnk">
+          Integrantes
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="[projetoSelecionado,'requisitos']" routerLinkActive="active" id="requisitoLnk">
+          Requisito
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="[projetoSelecionado, 'casos-de-uso']" routerLinkActive="active" id="casoDeUsoLnk">
+          Casos de uso
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="[projetoSelecionado, 'atividades']" routerLinkActive="active" id="atividadesLnk">
+          Atividades
+        </a>
+      </li>
+    </ul>
+    <app-menu-usuario class="ml-auto"></app-menu-usuario>
+  </div>
+</nav>
